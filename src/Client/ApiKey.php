@@ -8,7 +8,7 @@ namespace MultiSafepay\Client;
 
 use MultiSafepay\Exception\InvalidApiKeyException;
 
-class ApiKey
+class ApiKey implements ApiKeyInterface
 {
     /**
      * @var string

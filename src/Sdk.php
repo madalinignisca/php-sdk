@@ -13,6 +13,7 @@ use MultiSafepay\Api\IssuerManager;
 use MultiSafepay\Api\TokenManager;
 use MultiSafepay\Api\TransactionManager;
 use MultiSafepay\Api\WalletManager;
+use MultiSafepay\Client\ApiKeyInterface;
 use MultiSafepay\Client\Client;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -38,7 +39,7 @@ class Sdk
      * @param bool $strictMode
      */
     public function __construct(
-        string $apiKey,
+        ?ApiKeyInterface $apiKey,
         bool $isProduction,
         ClientInterface $httpClient = null,
         ?RequestFactoryInterface $requestFactory = null,

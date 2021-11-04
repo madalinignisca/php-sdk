@@ -83,7 +83,7 @@ class Client
      * @param bool $strictMode
      */
     public function __construct(
-        string $apiKey,
+        ?ApiKeyInterface $apiKey,
         bool $isProduction,
         ?ClientInterface $httpClient = null,
         ?RequestFactoryInterface $requestFactory = null,
@@ -91,7 +91,11 @@ class Client
         string $locale = 'en_US',
         bool $strictMode = false
     ) {
-        $this->apiKey = new ApiKey($apiKey);
+        if ($apiKey instanceof ApiKeyInterface) {
+            $this->apiKey = $apiKey;
+        } else {
+            $this->apiKey = new ApiKey($apiKey);
+        }
         $this->url = $isProduction ? self::LIVE_URL : self::TEST_URL;
         $this->httpClient = $httpClient ?: Psr18ClientDiscovery::find();
         $this->requestFactory = $requestFactory;

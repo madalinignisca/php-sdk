@@ -6,7 +6,7 @@
 
 namespace MultiSafepay\Client;
 
-class ApiKeyInterface
+interface ApiKeyInterface
 {
 
     /**
